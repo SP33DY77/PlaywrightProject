@@ -27,6 +27,6 @@ test("User should access dashboard after API authentication", async ({ page }) =
     await loginPage.goToBaseURL();
     await expect(page).toHaveURL("/");
     await expect(loginPage.mainDashboardBanner).toHaveText("Amazing Events");
-    await loginPage.takeScreenshot();
+    await loginPage.takeScreenshot("api-login");
 });
 
