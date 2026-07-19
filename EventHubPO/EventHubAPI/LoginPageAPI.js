@@ -15,7 +15,6 @@ class LoginPageAPI {
         } else {
             throw new Error(`Failed to get token: ${JSON.stringify(loginRespJson)}`);
         }
-        console.log("TOKEN SET", token);
     }
 }
 module.exports = LoginPageAPI;
