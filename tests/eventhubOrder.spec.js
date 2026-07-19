@@ -1,6 +1,5 @@
 const { test, expect, request } = require("@playwright/test");
 const loginPayload = { email: "test123@email.com", password: "Test123!" };
-const loginToPage = require("./evenhubValidLoginAPI.spec");
 const AuthHelper = require("../EventHubPO/EventHubAPI/AuthHelper");
 let loginToken;
 
