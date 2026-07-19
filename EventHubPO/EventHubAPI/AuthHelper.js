@@ -1,14 +1,14 @@
 class AuthHelper {
-
-    constructor(page) {
-        this.page = page
+    
+    constructor(page, loginToken) {
+        this.page = page;
+        this.loginToken = loginToken;
     }
 
-    async loginToPage(page) {
-        await page.addInitScript(value => {
-            window.localStorage.setItem("eventhub_token", value);
-        }, loginToken)
+    async loginToPage() {
+        await this.page.addInitScript(token => {
+            window.localStorage.setItem("eventhub_token", token);
+        }, this.loginToken);
     }
-
 }
 module.exports = AuthHelper;

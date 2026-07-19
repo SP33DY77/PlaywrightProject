@@ -10,7 +10,7 @@ class LoginPage {
         this.emailMsg = page.getByText('Enter a valid email', { exact: true })
         this.pswdMsg = page.getByText('Password must be at least 6 characters', { exact: true })
         this.environmentInfoBtn = page.getByRole('link', { name: 'RahulShettyAcademy.com' });
-        this.mainDashboardBanner = page.locator("h1");
+        this.mainDashboardBanner = page.locator('span.text-indigo-200');
     }
 
     async goToBaseURL() {

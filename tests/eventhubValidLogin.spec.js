@@ -72,7 +72,7 @@ test("Login Validation with correct data", async ({ page }) => {
     await loginPage.goToBaseURL();
     await loginPage.loginToAccount(loginPayload);
     await expect(page).toHaveURL("/");
-    await expect(loginPage.mainDashboardBanner).toHaveText("Discover & BookAmazing Events");
+    await expect(loginPage.mainDashboardBanner).toHaveText("Amazing Events");
     await loginPage.takeScreenshot("valid-login");
 });
 

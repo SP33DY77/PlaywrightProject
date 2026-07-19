@@ -13,7 +13,7 @@ test.beforeAll(async () => {
     const loginPageAPI = new LoginPageAPI(apiContext, loginPayload, baseURLAPI + "auth/login");
     loginToken = await loginPageAPI.getToken();
     expect(loginToken).toBeTruthy();
-    authHelper = new AuthHelper(page);
+
 });
 
 test.afterAll(async () => {
@@ -21,11 +21,12 @@ test.afterAll(async () => {
 });
 
 test("User should access dashboard after API authentication", async ({ page }) => {
+    const authHelper = new AuthHelper(page, loginToken);
     await authHelper.loginToPage();
     const loginPage = new LoginPage(page);
     await loginPage.goToBaseURL();
     await expect(page).toHaveURL("/");
-    await expect(loginPage.mainDashboardBanner).toHaveText("Discover & BookAmazing Events");
+    await expect(loginPage.mainDashboardBanner).toHaveText("Amazing Events");
     await loginPage.takeScreenshot();
 });
 
