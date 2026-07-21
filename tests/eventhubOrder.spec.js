@@ -21,5 +21,4 @@ test("Verify events on dashboard", async ({ page }) => {
     const loginPage = new LoginPage(page);
     await loginPage.goToBaseURL();
     await expect(page).toHaveURL("/")
-
 });
