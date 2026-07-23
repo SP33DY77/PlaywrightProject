@@ -1,7 +1,7 @@
 const { test, expect, request } = require("@playwright/test");
 const LoginPageAPI = require("../EventHubPO/EventHubAPI/LoginPageAPI");
 const LoginPage = require("../EventHubPO/LoginPage");
-const loginPayload = { email: "test123@email.com", password: "Test123!" };
+const loginPayload = require("../EventHubPO/LoginPayload.json");
 const baseURLAPI = "https://api.eventhub.rahulshettyacademy.com/api/";
 const AuthHelper = require("../EventHubPO/EventHubAPI/AuthHelper");
 let loginToken;

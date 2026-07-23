@@ -3,7 +3,7 @@ const LoginPageAPI = require("../EventHubPO/EventHubAPI/LoginPageAPI");
 const LoginPage = require("../EventHubPO/LoginPage");
 const DashboardPage = require("../EventHubPO/DashboardPage");
 const baseURLAPI = "https://api.eventhub.rahulshettyacademy.com/api/";
-const loginPayload = { email: "test123@email.com", password: "Test123!" };
+const loginPayload = require("../EventHubPO/LoginPayload.json");
 const AuthHelper = require("../EventHubPO/EventHubAPI/AuthHelper");
 let loginToken;
 

@@ -1,6 +1,6 @@
 const { test, expect, request } = require("@playwright/test");
 const LoginPage = require("../EventHubPO/LoginPage");
-const loginPayload = { email: "test123@email.com", password: "Test123!" };
+const loginPayload = require("../EventHubPO/LoginPayload.json");
 const wrongLoginPayload = { email: "test123222222@test.pl", password: "Test3333!" };
 const emptyLoginPayload = { email: "", password: "" };
 
