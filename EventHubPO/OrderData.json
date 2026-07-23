@@ -2,6 +2,6 @@
     "customerEmail": "test123@email.com",
     "customerName": "test123",
     "customerPhone": "+91 222222222",
-    "eventId": "3",
-    "quantity": "2"
+    "eventId": 3,
+    "quantity": 2
 }
