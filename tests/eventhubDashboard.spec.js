@@ -1,6 +1,7 @@
 const { test, expect, request } = require("@playwright/test");
 const LoginPageAPI = require("../EventHubPO/EventHubAPI/LoginPageAPI");
 const LoginPage = require("../EventHubPO/LoginPage");
+const DashboardPage = require("../EventHubPO/DashboardPage");
 const baseURLAPI = "https://api.eventhub.rahulshettyacademy.com/api/";
 const loginPayload = { email: "test123@email.com", password: "Test123!" };
 const AuthHelper = require("../EventHubPO/EventHubAPI/AuthHelper");
@@ -20,5 +21,11 @@ test("Verify events on dashboard", async ({ page }) => {
     await authHelper.loginToPage();
     const loginPage = new LoginPage(page);
     await loginPage.goToBaseURL();
-    await expect(page).toHaveURL("/")
+    await expect(page).toHaveURL("/");
+    await page.getByTestId('nav-events');
+    const dashboardPage = new DashboardPage(page);
+    await page.waitForLoadState("networkidle");
+    let eventCount = await dashboardPage.countEvents();
+    await expect(eventCount).toBe(6);
+
 });
