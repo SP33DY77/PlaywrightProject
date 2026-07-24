@@ -16,5 +16,17 @@ class LoginPageAPI {
             throw new Error(`Failed to get token: ${JSON.stringify(loginRespJson)}`);
         }
     }
+
+    async getTokenWithInvalidCredentials() {
+        const loginResp = await this.apiContext.post(this.baseURL, {
+            data: this.loginPayload
+        });
+        const loginRespJson = await loginResp.json();
+        if (loginRespJson.success === false) {
+            return null;
+        } else {
+            throw new Error(`Unexpected response: ${JSON.stringify(loginRespJson)}`);
+        }
+    }
 }
 module.exports = LoginPageAPI;
