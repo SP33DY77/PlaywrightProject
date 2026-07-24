@@ -1,133 +1,62 @@
 # EventHub Playwright Automation
 
-End-to-end test automation framework built with **Playwright** and **JavaScript** for testing the EventHub web application.
+This repository contains Playwright end-to-end and API automation tests for the EventHub application. The suite demonstrates UI testing, API authentication, order flow validation, and request mocking with the Page Object Model (POM).
 
-The project demonstrates UI automation, API-based authentication, Page Object Model design, and CI execution with GitHub Actions.
+## Features
 
----
+- UI automation for login and dashboard flows
+- API-based authentication with token reuse
+- Order creation and validation tests
+- Mocking of bookings API to test empty-state scenarios
+- HTML test reporting with Playwright
 
 ## Tech Stack
 
-* **Playwright** - End-to-End test automation
-* **JavaScript (Node.js)**
-* **API Testing**
-* **Page Object Model (POM)**
-* **GitHub Actions** - Continuous Integration
-
----
+- Playwright
+- JavaScript / Node.js
+- Page Object Model (POM)
+- REST API testing via Playwright request context
 
 ## Project Structure
 
-```
-PlaywrightProject
-│
-├── EventHubPO
+```text
+PlaywrightProject/
+├── EventHubPO/
+│   ├── DashboardPage.js
 │   ├── LoginPage.js
-│   └── EventHubAPI
+│   ├── LoginPayload.json
+│   ├── LoginPayloadFake.json
+│   ├── OrderData.json
+│   └── EventHubAPI/
+│       ├── AuthHelper.js
 │       ├── LoginPageAPI.js
-│       └── AuthHelper.js
-│
-├── tests
+│       └── OrderAPI.js
+├── tests/
+│   ├── eventhubDashboard.spec.js
+│   ├── eventhubInvalidLoginAPI.spec.js
+│   ├── eventhubOrderAPI.spec.js
+│   ├── eventhubOrderMocking.spec.js
 │   ├── eventhubValidLogin.spec.js
-│   ├── eventhubValidLoginAPI.spec.js
-│   └── eventhubOrder.spec.js
-│
+│   └── eventhubValidLoginAPI.spec.js
 ├── playwright.config.js
 ├── package.json
 └── README.md
 ```
 
----
-
-## Test Coverage
-
-The framework currently covers:
-
-### UI Tests
-
-✅ Login page validation
-✅ Login with valid credentials
-✅ Login validation with incorrect data
-✅ Empty input validation
-✅ Dashboard verification
-✅ Event verification and ordering flow
-
-### API Tests
-
-✅ User authentication through API
-✅ Token extraction
-✅ Reusing authentication state in UI tests
-
----
-
-## Framework Design
-
-The project follows the **Page Object Model (POM)** approach.
-
-Benefits:
-
-* Better test maintenance
-* Reusable page methods
-* Separation between test logic and page locators
-* Cleaner test structure
-
-Example:
-
-```
-Test
- |
- └── Page Object
-        |
-        └── Locators + Actions
-```
-
----
-
-## API Authentication Flow
-
-Instead of performing UI login before every test:
-
-```
-API Login
-    |
-    ↓
-Receive authentication token
-    |
-    ↓
-Store token in browser localStorage
-    |
-    ↓
-Open authenticated application
-    |
-    ↓
-Execute UI tests
-```
-
-This makes tests faster and reduces unnecessary UI actions.
-
----
-
 ## Installation
 
-Clone repository:
-
-```bash
-git clone https://github.com/SP33DY77/PlaywrightProject.git
-```
-
-Install dependencies:
+1. Clone the repository
+2. Install dependencies:
 
 ```bash
 npm install
 ```
 
-Install Playwright browsers:
+3. Install Playwright browsers:
 
 ```bash
 npx playwright install
 ```
-
----
 
 ## Running Tests
 
@@ -137,64 +66,32 @@ Run all tests:
 npx playwright test
 ```
 
-Run tests in headed mode:
+Run a specific test file:
+
+```bash
+npx playwright test tests/eventhubOrderMocking.spec.js
+```
+
+Run in headed mode:
 
 ```bash
 npx playwright test --headed
 ```
 
-Run specific test:
+## Viewing Reports
 
-```bash
-npx playwright test tests/eventhubValidLoginAPI.spec.js
-```
-
----
-
-## Test Reports
-
-Generate HTML report:
+Open the HTML report after a test run:
 
 ```bash
 npx playwright show-report
 ```
 
-The framework also provides:
+## Notes
 
-* Screenshots on failure
-* Trace files for debugging
-* Test execution logs
+- Tests use the Playwright configuration from [playwright.config.js](playwright.config.js).
+- The mocking example in [tests/eventhubOrderMocking.spec.js](tests/eventhubOrderMocking.spec.js) shows how to return an empty bookings response for zero-order scenarios.
 
----
+## License
 
-## CI/CD
+ISC
 
-Tests are executed automatically using **GitHub Actions**.
-
-CI pipeline includes:
-
-* Installing dependencies
-* Installing Playwright browsers
-* Running automated tests
-* Generating test reports
-
----
-
-## Future Improvements
-
-Planned improvements:
-
-* Add Playwright fixtures
-* Implement storageState authentication
-* Add environment configuration
-* Move test data to external files
-* Add TypeScript support
-* Expand API test coverage
-
----
-
-## Author
-
-**SP33DY77**
-
-QA Automation Engineer | Playwright | JavaScript
