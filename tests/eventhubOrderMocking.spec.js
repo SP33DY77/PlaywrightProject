@@ -44,6 +44,6 @@ test("Should display zero orders when bookings API returns an empty list", async
         waitUntil: "domcontentloaded"
     });
     await expect(page).toHaveURL("/bookings");
-    await expect(page.getByRole("heading", { name: "Bookings" })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'No bookings yet' })).toBeVisible();
     await expect(page.getByTestId("booking-card")).toHaveCount(0);
 });
